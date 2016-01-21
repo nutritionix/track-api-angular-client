@@ -417,7 +417,7 @@
        * @returns {Object[]} --
        */
       client.oauth.facebook.i = function (accessToken, refCode) {
-        return client('/log', {
+        return client('/oauth/facebook/i', {
           method: 'POST',
           data:   {
             "access_token": accessToken,
