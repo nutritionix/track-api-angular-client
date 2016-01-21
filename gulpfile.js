@@ -20,6 +20,7 @@ gulp.task('test', function (done) {
 });
 
 gulp.task('ngdocs', [], function () {
+  let filter = gulp.plugins.filter(['index.html'], {restore: true});
   let options = {
     html5Mode: false,
     startPage: '/api/nix.track-api-client',
@@ -31,7 +32,10 @@ gulp.task('ngdocs', [], function () {
 
   return gulp.src(libFile)
     .pipe(gulp.plugins.ngdocs.process(options))
-    .pipe(gulp.dest('./docs'));
+    .pipe(filter)
+    .pipe(gulp.plugins.replace("addTag('base', {href: baseUrl});", ""))
+    .pipe(filter.restore)
+    .pipe(gulp.dest('./docs'))
 });
 
 gulp.task('build', ['test', 'ngdocs'], function () {
