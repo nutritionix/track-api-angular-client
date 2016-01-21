@@ -1,0 +1,76 @@
+<h1><code ng:non-bindable="">nixTrackApiClient</code>
+<div><span class="hint">service in module <code ng:non-bindable="">nix.track-api-client</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-page"><p>Used to make calls to nutritionix api.
+Low level function to build api client on top of.
+All service methods are wrappers around service-function calls.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">nixTrackApiClient(endpoint, config);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>endpoint</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-page"><p>Relative api endpoint url e.g. &#39;/users&#39;</p>
+</div></td></tr><tr><td>config</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-page"><p>Call-specific override for http calls configuration object
+<a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a>
+The last override in chain of default object and
+<a href="#/api/nix.track-api-client.provider:nixTrackApiClientProvider#methods_sethttpconfig">nix.track-api-client.provider:nixTrackApiClientProvider#methods_sethttpconfig</a> to form final http call config.</p>
+<p>Default object is built like that:
+<pre class="prettyprint linenums">
+{
+    method:  'GET',
+    url:     apiEndpoint + endpoint,
+    headers: {
+        "x-user-jwt": client.getUserJwt(),
+        'X-APP-ID':  credentials.appId,
+        'X-APP-KEY': credentials.appKey
+    },
+    params:  {}
+}
+</pre>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getuserjwt">getUserJwt()</h3>
+<div class="getuserjwt"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-getuserjwt-page"><p>Retrieve current user jwt</p>
+</div><h5 id="methods_getuserjwt_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-getuserjwt-page"><p>User jwt</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_me">me()</h3>
+<div class="me"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-me-page"><p>Retrieves own user object</p>
+</div><h5 id="methods_me_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-me-page"><p>own user object</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setapicredentials">setApiCredentials(appId, appKey)</h3>
+<div class="setapicredentials"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-setapicredentials-page"><p>Set api credentials generated at <a href="https://developer.nutritionix.com">https://developer.nutritionix.com</a> portal</p>
+</div><h5 id="methods_setapicredentials_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>appId</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-setapicredentials-page"><p>Application id</p>
+</div></td></tr><tr><td>appKey</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-setapicredentials-page"><p>Application Key</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setuserjwt">setUserJwt()</h3>
+<div class="setuserjwt"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-setuserjwt-page"><p>Set current user jwt</p>
+</div><h5 id="methods_setuserjwt_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string|function</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-setuserjwt-page"><p>User jwt or
+callable to fetch it within current application</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_calories_nutrient">calories_nutrient</h3>
+<div class="calories_nutrient"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-calories-nutrient-page"><p><strong>208</strong> is an id of calories nutrient</p>
+</div></div>
+</li>
+<li><h3 id="properties_macronutrients">macronutrients</h3>
+<div class="macronutrients"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackapiclient-macronutrients-page"><p>List of ids of nutrients considered as  Macronutrients</p>
+<ul>
+<li><strong>204</strong> fat</li>
+<li><strong>606</strong> satfat</li>
+<li><strong>205</strong> totalcarb</li>
+<li><strong>291</strong> fiber</li>
+<li><strong>269</strong> sugar</li>
+<li><strong>203</strong> protein</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+</div>
