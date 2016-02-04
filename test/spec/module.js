@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Angular Nutritionix Api: Module', function () {
+describe('Track API client: Module', function () {
     beforeEach(module('nix.track-api-client'));
 
     describe('function deepMerge', function(){

@@ -146,6 +146,15 @@ NG_DOCS={
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used to make calls to nutritionix api.",
       "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default endpoint fat fetch fiber final form function generated getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org override params portal property protein provider relative retrieve retrieves satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client url usage user wrappers x-app-id x-app-key x-user-jwt"
+    },
+    {
+      "section": "api",
+      "id": "nix.track-api-client.service:nixTrackCalculator",
+      "shortName": "nixTrackCalculator",
+      "type": "service",
+      "moduleName": "nix.track-api-client",
+      "shortDescription": "Used to calculate recommended calories number",
+      "keywords": "0-4 098 247 330 362 397 447 593 677 799 88 age api array basal bmr calculate calculatebmr calculaterecommendedcalories calories centimeters cm day days defaults exercise exerciselevel exerciselevels extra factor female gender heavy height kilograms levels light list male men metabolic method moderate nix nixtrackcalculator number person property rate recommended service track-api-client week weight women workouts years"
     }
   ],
   "apis": {

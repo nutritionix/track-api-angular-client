@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Angular Nutritionix Api: filter', function () {
+describe('Track API client: filter', function () {
     beforeEach(module('nix.track-api-client'));
 
     describe('"nutrient"', function () {
