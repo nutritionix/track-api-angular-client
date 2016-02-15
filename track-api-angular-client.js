@@ -225,14 +225,23 @@
        * @description
        * Returns the nutrients for all foods in the posted query.
        *
-       * @param {string} query Plain text with each entry separated by a new line.
+       * @param {string|object} query Plain text with each entry separated by a new line, or configuration object
+       *                              ```
+       *                              {
+       *                               "query": "string",
+       *                               "num_servings": 1,
+       *                               "aggregate": "string",
+       *                               "line_delimited": false,
+       *                               "timezone": "US/Eastern"
+       *                              }
+       *                              ```
        *
        * @returns {Object} nutrients for all foods in the posted query.
        */
       client.natural.nutrients = function (query) {
         return client('/natural/nutrients', {
           method: 'POST',
-          data:   {query: query}
+          data:   angular.isString(query) ? {query: query} : query
         });
       };
 
