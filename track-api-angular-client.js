@@ -327,11 +327,29 @@
        * @param {string} [userId] Optional. If provided and user has access to them
        *                          logs for other user will be served
        *
+       * @param {object} [options] Optional. Can be used to pass endpoint params.
+       *
        * @returns {Object[]} User food logs
        */
-      client.log.get = function (userId) {
+      client.log.get = function (userId, options) {
+        if (angular.isObject(userId)) {
+          options = userId;
+          userId = '';
+        }
+
+        if (!angular.isObject(options)) {
+          options = {};
+        }
+
+        if (options.userId) {
+          userId = options.userId;
+        }
+
         return client('/log' + (userId ? '/' + userId : ''),
-          {method: 'GET'}
+          {
+            method: 'GET',
+            params: options
+          }
         );
       };
 
