@@ -510,6 +510,9 @@
        * Auth related endpoints
        * - {@link nix.track-api-client.nixTrackApiClient.auth.object:signup SignUp}
        *
+       * Password reset related endpoints
+       * - {@link nix.track-api-client.nixTrackApiClient.auth.object:updatePassword Update Password}
+       *
        */
       client.auth = {
         /**
@@ -519,7 +522,15 @@
          * @description
          * Auth Sign Up related endpoints
          */
-        signup: {}
+        signup:         {},
+        /**
+         * @ngdoc object
+         * @name nix.track-api-client.nixTrackApiClient.auth.object:updatePassword
+         *
+         * @description
+         * Reset password related endpoints
+         */
+        updatePassword: {}
       };
 
       /**
@@ -577,6 +588,51 @@
         return client('/auth/signin', {
           method: 'POST',
           data:   user
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.auth.object:updatePassword
+       *
+       * @name nix.track-api-client.nixTrackApiClient.auth.object:updatePassword#request
+       * @description
+       * requests a password reset link to be sent to email or phone number
+       *
+       * @param {string} id Email or mobile number of the user
+       */
+      client.auth.updatePassword.request = function (id) {
+        var params = {};
+        if (id.indexOf('@')) {
+          params.email = id;
+        } else {
+          params.mobile_number = id;
+        }
+        return client('/auth/updatePassword', {
+          method: 'GET',
+          params: params
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.auth.object:updatePassword
+       *
+       * @name nix.track-api-client.nixTrackApiClient.auth.object:updatePassword#set
+       * @description
+       * updates a password
+       *
+       * @param {object} resetPasswordObj <pre>
+       *                                    {
+       *                                      "link_hash": "string",
+       *                                      "password": "string"
+       *                                    }
+       *                                  </pre>
+       */
+      client.auth.updatePassword.set = function (resetPasswordObj) {
+        return client('/auth/updatePassword', {
+          method: 'post',
+          body:   resetPasswordObj
         });
       };
 

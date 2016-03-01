@@ -50,6 +50,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "nix.track-api-client.nixTrackApiClient.auth.object:updatePassword",
+      "shortName": "updatePassword",
+      "type": "object",
+      "moduleName": "nix.track-api-client.nixTrackApiClient.auth",
+      "shortDescription": "Reset password related endpoints",
+      "keywords": "api email endpoints link link_hash method mobile nix nixtrackapiclient number object password phone request requests reset resetpasswordobj set string track-api-client updatepassword updates user"
+    },
+    {
+      "section": "api",
       "id": "nix.track-api-client.nixTrackApiClient.oauth.object:facebook",
       "shortName": "facebook",
       "type": "object",
@@ -64,7 +73,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "Auth related endpoints",
-      "keywords": "api email endpoints fields logs method minimum nix nixtrackapiclient object password phone signin signup track-api-client user"
+      "keywords": "api email endpoints fields logs method minimum nix nixtrackapiclient object password phone reset signin signup track-api-client update updatepassword user"
     },
     {
       "section": "api",
