@@ -488,16 +488,29 @@
       };
 
       /**
-       * @ngdoc method
-       * @methodOf nix.track-api-client.service:nixTrackApiClient
+       * @ngdoc function
        *
-       * @name nix.track-api-client.service:nixTrackApiClient#me
+       * @name nix.track-api-client.nixTrackApiClient.service:me
        * @description
        * Retrieves own user object
        *
        * @returns {Object} own user object
        */
       client.me = function () {
+        return client('/me', {method: 'GET'});
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.service:me
+       *
+       * @name nix.track-api-client.nixTrackApiClient.service:me#preferences
+       * @description
+       * updates user preferences
+       *
+       * @returns {Object} own user object
+       */
+      client.me.preferences = function (preferences) {
         return client('/me', {method: 'GET'});
       };
 

@@ -131,6 +131,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "nix.track-api-client.nixTrackApiClient.service:me",
+      "shortName": "me",
+      "type": "function",
+      "moduleName": "nix.track-api-client.nixTrackApiClient",
+      "shortDescription": "Retrieves own user object",
+      "keywords": "api function method nix nixtrackapiclient object preferences retrieves service track-api-client updates user"
+    },
+    {
+      "section": "api",
       "id": "nix.track-api-client.nixTrackApiClient.service:users",
       "shortName": "users",
       "type": "function",
@@ -154,7 +163,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used to make calls to nutritionix api.",
-      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default endpoint fat fetch fiber final form function generated getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org override params portal property protein provider relative retrieve retrieves satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client url usage user wrappers x-app-id x-app-key x-user-jwt"
+      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default endpoint fat fetch fiber final form function generated getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org override params portal property protein provider relative retrieve satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client url usage user wrappers x-app-id x-app-key x-user-jwt"
     },
     {
       "section": "api",
