@@ -631,8 +631,8 @@
        */
       client.auth.updatePassword.set = function (resetPasswordObj) {
         return client('/auth/updatePassword', {
-          method: 'post',
-          body:   resetPasswordObj
+          method: 'POST',
+          data:   resetPasswordObj
         });
       };
 

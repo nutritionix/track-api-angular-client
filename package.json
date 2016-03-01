@@ -1,6 +1,6 @@
 {
   "name": "track-api-angular-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "title": "Track Api Angular Client",
   "description": "Client library for using Nutritionix Track Api in AngularJS applications",
   "originalDevDependencies": {
