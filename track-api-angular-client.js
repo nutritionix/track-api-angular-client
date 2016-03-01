@@ -511,7 +511,7 @@
        * @returns {Object} own user object
        */
       client.me.preferences = function (preferences) {
-        return client('/me', {method: 'GET'});
+        return client('/me', {method: 'POST', data: preferences});
       };
 
 
