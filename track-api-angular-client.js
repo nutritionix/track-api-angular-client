@@ -395,6 +395,25 @@
        * @ngdoc method
        * @methodOf nix.track-api-client.nixTrackApiClient.object:log
        *
+       * @name nix.track-api-client.nixTrackApiClient.object:log#barcode
+       * @description
+       * log a food by barcode
+       *
+       * @param {string} upc Food upc
+       *
+       * @returns {Object[]} --
+       */
+      client.log.barcode = function (upc) {
+        return client('/log/barcode', {
+          method: 'POST',
+          data:   {upc: upc}
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.object:log
+       *
        * @name nix.track-api-client.nixTrackApiClient.object:log#update
        * @description
        * Updates user logs.
