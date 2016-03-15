@@ -68,6 +68,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "nix.track-api-client.nixTrackApiClient.oauth.object:fitbit",
+      "shortName": "fitbit",
+      "type": "object",
+      "moduleName": "nix.track-api-client.nixTrackApiClient.oauth",
+      "shortDescription": "Oauth Fitbit related endpoints",
+      "keywords": "account api authorize endpoint endpoints fitbit link method nix nixtrackapiclient oauth object pass returns sign string track-api-client unlink unlinks user"
+    },
+    {
+      "section": "api",
       "id": "nix.track-api-client.nixTrackApiClient.object:auth",
       "shortName": "auth",
       "type": "object",
@@ -82,7 +91,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "User food log related endpoints",
-      "keywords": "access add adds api barcode delete deletes endpoint endpoints food foods log logs method nix nixtrackapiclient object optional params pass provided returns served track-api-client upc update updates user"
+      "keywords": "access add adds api approaches barcode copies copy delete deletes depending endpoint endpoints food foods iwth log logs method nix nixtrackapiclient object optional params pass provided returns served track-api-client upc update updates user"
     },
     {
       "section": "api",
@@ -163,7 +172,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used to make calls to nutritionix api.",
-      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default endpoint fat fetch fiber final form function generated getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org override params portal property protein provider relative retrieve satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client url usage user wrappers x-app-id x-app-key x-user-jwt"
+      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default disregarding endpoint fat fetch fiber final form function generated getapiendpoint getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org original override overrides params portal property protein provider relative retrieve return satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client true url usage user wrappers x-app-id x-app-key x-user-jwt"
     },
     {
       "section": "api",

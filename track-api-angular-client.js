@@ -37,7 +37,8 @@
    * Used for configuring {@link nix.track-api-client.service:nixTrackApiClient} service
    */
   module.provider('nixTrackApiClient', function nixTrackApiClient() {
-    var apiEndpoint = 'https://trackapi.nutritionix.com/v1',
+    var originalApiEndpoint = 'https://trackapi.nutritionix.com/v1',
+      apiEndpoint = originalApiEndpoint,
       credentials = {},
       httpConfig = {},
       setApiCredentials;
@@ -136,6 +137,19 @@
         );
 
         return $http(config);
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackApiClient
+       * @name nix.track-api-client.service:nixTrackApiClient#getApiEndpoint
+       *
+       * @param {boolean} original If true, will return original api endpoint disregarding any overrides.
+       *
+       * @returns {string} Api endpoint url
+       */
+      client.getApiEndpoint = function (original) {
+        return original ? originalApiEndpoint : apiEndpoint;
       };
 
       /**
@@ -395,6 +409,36 @@
        * @ngdoc method
        * @methodOf nix.track-api-client.nixTrackApiClient.object:log
        *
+       * @name nix.track-api-client.nixTrackApiClient.object:log#copy
+       * @description
+       * Copies food object to user's log iwth different approaches depending on the food
+       *
+       * @param {Object} food Food log to copy from
+       *
+       * @returns {Object[]} --
+       */
+      client.log.copy = function (food) {
+        var copy;
+        if (food.source === 2) {
+          if (food.upc) {
+            return client.log.barcode(food.upc);
+          }
+
+          copy = angular.copy(food);
+          delete copy.id;
+          delete copy.created_at;
+          delete copy.consumed_at;
+
+          return client.log.add([copy]);
+        } else {
+          return client.natural.add([food.serving_qty, food.serving_unit, food.food_name].join(' '));
+        }
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.object:log
+       *
        * @name nix.track-api-client.nixTrackApiClient.object:log#barcode
        * @description
        * log a food by barcode
@@ -446,7 +490,15 @@
          * @description
          * Oauth Facebook related endpoints
          */
-        facebook: {}
+        facebook: {},
+        /**
+         * @ngdoc object
+         * @name nix.track-api-client.nixTrackApiClient.oauth.object:fitbit
+         *
+         * @description
+         * Oauth Fitbit related endpoints
+         */
+        fitbit:   {}
       };
 
       /**
@@ -470,6 +522,35 @@
             "ref_code":     refCode
           }
         });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.oauth.object:fitbit
+       *
+       * @name nix.track-api-client.nixTrackApiClient.oauth.object:fitbit#sign
+       * @description
+       * Returns a string used to link the user to a fitbit account. pass it to the authorize endpoint
+       *
+       * @returns {string} returns a string used to link the user to a fitbit account. pass it to the authorize endpoint
+       */
+      client.oauth.fitbit.sign = function () {
+        return client('/oauth/fitbit/sign', {
+          method: 'POST',
+          data:   {}
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.oauth.object:fitbit
+       *
+       * @name nix.track-api-client.nixTrackApiClient.oauth.object:fitbit#unlink
+       * @description
+       * unlinks fitbit account
+       */
+      client.oauth.fitbit.unlink = function (state) {
+        return client('/oauth/fitbit/unlink', {});
       };
 
       /**
