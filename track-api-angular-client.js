@@ -287,14 +287,15 @@
        * @description
        * Returns the nutrients for all foods in the posted query.
        *
-       * @param {string} query Plain text with each entry separated by a new line.
+       * @param {string|object} query Plain text with each entry separated by a new line,
+       *                              or object with extended configuration
        *
        * @returns {Object} Added food info
        */
       client.natural.add = function (query) {
         return client('/natural/add', {
           method: 'POST',
-          data:   {query: query}
+          data:   angular.isObject(query) ? query : {query: query}
         });
       };
 
