@@ -412,7 +412,7 @@
        *
        * @name nix.track-api-client.nixTrackApiClient.object:log#copy
        * @description
-       * Copies food object to user's log iwth different approaches depending on the food
+       * Copies food object to user's log with different approaches depending on the food
        *
        * @param {Object} food Food log to copy from
        *
@@ -420,20 +420,16 @@
        */
       client.log.copy = function (food) {
         var copy;
-        if (food.source === 2) {
-          if (food.upc) {
-            return client.log.barcode(food.upc);
-          }
-
-          copy = angular.copy(food);
-          delete copy.id;
-          delete copy.created_at;
-          delete copy.consumed_at;
-
-          return client.log.add([copy]);
-        } else {
-          return client.natural.add([food.serving_qty, food.serving_unit, food.food_name].join(' '));
+        if (food.source === 2 && food.upc) {
+          return client.log.barcode(food.upc);
         }
+
+        copy = angular.copy(food);
+        delete copy.id;
+        delete copy.created_at;
+        delete copy.consumed_at;
+
+        return client.log.add([copy]);
       };
 
       /**
