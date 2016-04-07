@@ -87,7 +87,7 @@
     };
 
 
-    this.$get = function nixTrackApiClientFactory($http) {
+    this.$get = function nixTrackApiClientFactory($http, nixTrackUtils) {
       var userJwt;
 
       /**
@@ -419,17 +419,11 @@
        * @returns {Object[]} --
        */
       client.log.copy = function (food) {
-        var copy;
         if (food.source === 2 && food.upc) {
           return client.log.barcode(food.upc);
         }
 
-        copy = angular.copy(food);
-        delete copy.id;
-        delete copy.created_at;
-        delete copy.consumed_at;
-
-        return client.log.add([copy]);
+        return client.log.add([nixTrackUtils.copyFood(food)]);
       };
 
       /**
@@ -1014,6 +1008,118 @@
         }
 
         return Math.round(this.exerciseLevels[exerciseLevel].factor * this.calculateBmr(gender, weight, height, age));
+      }
+    };
+  });
+
+  /**
+   * @ngdoc service
+   * @name  nix.track-api-client.service:nixTrackUtils
+   *
+   * @description
+   * Wide purpose helpers and utilities service
+   */
+  module.factory('nixTrackUtils', function () {
+    return {
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#multiplyFoodNutrients
+       *
+       * @description
+       * Apply multiplier to all top level and full nutrients. Returns a copy of the food if inPlace param is not true.
+       *
+       * @param {object} food Input food
+       * @param {number|string} multiplier Multiplier value. Also support simple fractions like 1/4
+       * @param {boolean} inPlace If set to true, original object will be modified, instead of creating the copy
+       *
+       * @returns {object} Output food
+       */
+      multiplyFoodNutrients: function (food, multiplier, inPlace) {
+        var copy = inPlace ? food : this.copyFood(food);
+
+        multiplier = this.convertSimpleFractionToDecimal(multiplier || 1);
+
+        if (+multiplier === 1) {return copy;}
+
+        angular.forEach(copy, function (value, key) {
+          if (key === 'serving_qty' || key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+            copy[key] *= multiplier;
+          }
+        });
+
+        if (!angular.isArray(copy.full_nutrients)) {
+          copy.full_nutrients = [];
+        }
+
+        angular.forEach(copy.full_nutrients, function (nutrient) {
+          nutrient.value *= multiplier;
+        });
+
+        return copy;
+      },
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#calculateFoodMultiplier
+       *
+       * @description
+       * Calculate multiplier to be used in {@link nix.track-api-client.service:nixTrackUtils#multiplyFoodNutrients}
+       * based on current food and target serving quantity
+       *
+       * @param {object} food Target food
+       * @param {number/string} targetServingQuantity Target serving quantity to multiply food to. Also supports simple fractions
+       * @returns {number} multiplier
+       */
+      calculateFoodMultiplier: function (food, targetServingQuantity) {
+        return this.convertSimpleFractionToDecimal(targetServingQuantity) / food.serving_qty;
+      },
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#copyFood
+       *
+       * @description
+       * Creates a deep copy of the provided food, including the full nutrients array.
+       * Does not copy id, created_at and consumed_at properties of the original food
+       *
+       * @param {object} food Target food
+       * @returns {object} food copy
+       */
+      copyFood: function (food) {
+        var copy = angular.copy(food);
+        delete copy.id;
+        delete copy.created_at;
+        delete copy.consumed_at;
+
+        return copy;
+      },
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#convertSimpleFractionToDecimal
+       *
+       * @description
+       * Converts simple fraction strings like '1/4' into decimal. Leaves any other value untouched.
+       *
+       * @param {string} fraction Simple fraction string
+       * @returns {*} Decimal or original value
+       */
+      convertSimpleFractionToDecimal: function (fraction) {
+        var simpleFractionParts = /^(\d+)\/(\d+)$/.exec(fraction);
+
+        if (simpleFractionParts) {
+          fraction = simpleFractionParts[1] / simpleFractionParts[2];
+        }
+
+        return fraction;
       }
     };
   });

@@ -182,6 +182,15 @@ NG_DOCS={
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used to calculate recommended calories number",
       "keywords": "0-4 098 247 330 362 397 447 593 677 799 88 age api array basal bmr calculate calculatebmr calculaterecommendedcalories calories centimeters cm day days defaults exercise exerciselevel exerciselevels extra factor female gender heavy height kilograms levels light list male men metabolic method moderate nix nixtrackcalculator number person property rate recommended service track-api-client week weight women workouts years"
+    },
+    {
+      "section": "api",
+      "id": "nix.track-api-client.service:nixTrackUtils",
+      "shortName": "nixTrackUtils",
+      "type": "service",
+      "moduleName": "nix.track-api-client",
+      "shortDescription": "Wide purpose helpers and utilities service",
+      "keywords": "api apply array based calculate calculatefoodmultiplier consumed_at converts convertsimplefractiontodecimal copy copyfood created_at creates creating current decimal deep food fraction fractions full helpers including inplace input leaves level method modified multiplier multiply multiplyfoodnutrients nix nixtrackutils nutrients object original output param properties provided purpose quantity returns service serving set simple string strings support supports target targetservingquantity top track-api-client true untouched utilities wide"
     }
   ],
   "apis": {

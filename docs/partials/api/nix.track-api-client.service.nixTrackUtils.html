@@ -1,0 +1,41 @@
+<h1><code ng:non-bindable="">nixTrackUtils</code>
+<div><span class="hint">service in module <code ng:non-bindable="">nix.track-api-client</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-page"><p>Wide purpose helpers and utilities service</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_calculatefoodmultiplier">calculateFoodMultiplier(food, targetServingQuantity)</h3>
+<div class="calculatefoodmultiplier"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-calculatefoodmultiplier-page"><p>Calculate multiplier to be used in <a href="#/api/nix.track-api-client.service:nixTrackUtils#multiplyfoodnutrients">nix.track-api-client.service:nixTrackUtils#multiplyFoodNutrients</a>
+based on current food and target serving quantity</p>
+</div><h5 id="methods_calculatefoodmultiplier_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>food</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-calculatefoodmultiplier-page"><p>Target food</p>
+</div></td></tr><tr><td>targetServingQuantity</td><td><a href="" class="label type-hint type-hint-number">number/string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-calculatefoodmultiplier-page"><p>Target serving quantity to multiply food to. Also supports simple fractions</p>
+</div></td></tr></tbody></table><h5 id="methods_calculatefoodmultiplier_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-calculatefoodmultiplier-page"><p>multiplier</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_convertsimplefractiontodecimal">convertSimpleFractionToDecimal(fraction)</h3>
+<div class="convertsimplefractiontodecimal"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-convertsimplefractiontodecimal-page"><p>Converts simple fraction strings like &#39;1/4&#39; into decimal. Leaves any other value untouched.</p>
+</div><h5 id="methods_convertsimplefractiontodecimal_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>fraction</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-convertsimplefractiontodecimal-page"><p>Simple fraction string</p>
+</div></td></tr></tbody></table><h5 id="methods_convertsimplefractiontodecimal_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">*</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-convertsimplefractiontodecimal-page"><p>Decimal or original value</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_copyfood">copyFood(food)</h3>
+<div class="copyfood"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-copyfood-page"><p>Creates a deep copy of the provided food, including the full nutrients array.
+Does not copy id, created_at and consumed_at properties of the original food</p>
+</div><h5 id="methods_copyfood_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>food</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-copyfood-page"><p>Target food</p>
+</div></td></tr></tbody></table><h5 id="methods_copyfood_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-copyfood-page"><p>food copy</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_multiplyfoodnutrients">multiplyFoodNutrients(food, multiplier, inPlace)</h3>
+<div class="multiplyfoodnutrients"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-multiplyfoodnutrients-page"><p>Apply multiplier to all top level and full nutrients. Returns a copy of the food if inPlace param is not true.</p>
+</div><h5 id="methods_multiplyfoodnutrients_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>food</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-multiplyfoodnutrients-page"><p>Input food</p>
+</div></td></tr><tr><td>multiplier</td><td><a href="" class="label type-hint type-hint-number">number</a><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-multiplyfoodnutrients-page"><p>Multiplier value. Also support simple fractions like 1/4</p>
+</div></td></tr><tr><td>inPlace</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-multiplyfoodnutrients-page"><p>If set to true, original object will be modified, instead of creating the copy</p>
+</div></td></tr></tbody></table><h5 id="methods_multiplyfoodnutrients_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-multiplyfoodnutrients-page"><p>Output food</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>
