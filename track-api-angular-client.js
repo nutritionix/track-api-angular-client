@@ -126,9 +126,10 @@
             method:  'GET',
             url:     apiEndpoint + endpoint,
             headers: {
-              "x-user-jwt": client.getUserJwt(),
-              'X-APP-ID':   credentials.appId,
-              'X-APP-KEY':  credentials.appKey
+              'Content-Type': 'application/json',
+              "x-user-jwt":   client.getUserJwt(),
+              'X-APP-ID':     credentials.appId,
+              'X-APP-KEY':    credentials.appKey
             },
             params:  {}
           },
@@ -376,14 +377,14 @@
        * @description
        * Deletes user logs.
        *
-       * @param {Object[]} foods Food logs to delete
+       * @param {Object|Object[]} foods Food log(s) to delete
        *
        * @returns {Object[]} --
        */
       client.log.delete = function (foods) {
         return client('/log', {
           method: 'DELETE',
-          data:   {foods: foods}
+          data:   {foods: angular.isArray(foods) ? foods : [foods]}
         });
       };
 
@@ -395,14 +396,14 @@
        * @description
        * Adds user logs.
        *
-       * @param {Object[]} foods Food logs to add
+       * @param {Object|Object[]} foods Food log(s) to add
        *
        * @returns {Object[]} --
        */
       client.log.add = function (foods) {
         return client('/log', {
           method: 'POST',
-          data:   {foods: foods}
+          data:   {foods: angular.isArray(foods) ? foods : [foods]}
         });
       };
 
@@ -415,15 +416,19 @@
        * Copies food object to user's log with different approaches depending on the food
        *
        * @param {Object} food Food log to copy from
+       * @param {string} consumedAt Consumed at timestamp
        *
        * @returns {Object[]} --
        */
-      client.log.copy = function (food) {
+      client.log.copy = function (food, consumedAt) {
         if (food.source === 2 && food.upc) {
-          return client.log.barcode(food.upc);
+          return client.log.barcode(food.upc, consumedAt);
         }
 
-        return client.log.add([nixTrackUtils.copyFood(food)]);
+        var copy = nixTrackUtils.copyFood(food);
+        copy.consumed_at = consumedAt;
+
+        return client.log.add(copy);
       };
 
       /**
@@ -435,13 +440,17 @@
        * log a food by barcode
        *
        * @param {string} upc Food upc
-       *
+       * @param {string} consumedAt Consumed At timestamp
+
        * @returns {Object[]} --
        */
-      client.log.barcode = function (upc) {
+      client.log.barcode = function (upc, consumedAt) {
         return client('/log/barcode', {
           method: 'POST',
-          data:   {upc: upc}
+          data:   {
+            upc:         upc,
+            consumed_at: consumedAt || null
+          }
         });
       };
 
@@ -453,14 +462,14 @@
        * @description
        * Updates user logs.
        *
-       * @param {Object[]} foods Food logs to update
+       * @param {Object|Object[]} foods Food log(s) to update
        *
        * @returns {Object[]} --
        */
       client.log.update = function (foods) {
         return client('/log', {
           method: 'PUT',
-          data:   {foods: foods}
+          data:   {foods: angular.isArray(foods) ? foods : [foods]}
         });
       };
 

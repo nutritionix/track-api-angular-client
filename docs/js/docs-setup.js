@@ -91,7 +91,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "User food log related endpoints",
-      "keywords": "access add adds api approaches barcode copies copy delete deletes depending endpoint endpoints food foods log logs method nix nixtrackapiclient object optional params pass provided returns served track-api-client upc update updates user"
+      "keywords": "access add adds api approaches barcode consumed consumedat copies copy delete deletes depending endpoint endpoints food foods log logs method nix nixtrackapiclient object optional params pass provided returns served timestamp track-api-client upc update updates user"
     },
     {
       "section": "api",
