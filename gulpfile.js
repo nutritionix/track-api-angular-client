@@ -1,5 +1,6 @@
 'use strict';
 
+const argv = require('yargs').argv;
 const fs = require('fs-extra');
 const bowerJson = JSON.parse(fs.readFileSync(__dirname + '/bower.json'));
 
@@ -11,6 +12,32 @@ const server = {
 
 const gulp = require('gulp');
 gulp.plugins = require('gulp-load-plugins')();
+
+gulp.task('setVersion', function () {
+  let version = argv.version;
+  if (!version) {
+    console.error('--version=x.x.x param is required');
+    process.exit(1);
+    return;
+  }
+
+  ['bower.json', 'package.json'].forEach(file => {
+    file = __dirname + '/' + file;
+    fs.writeFileSync(
+      file,
+      fs.readFileSync(file)
+        .toString()
+        .replace(/"version":\s*"[\d.]+?"/, `"version": "${version}"`)
+    );
+  });
+
+  fs.writeFileSync(
+    libFile,
+    fs.readFileSync(libFile)
+      .toString()
+      .replace(/@version\s+[^\s\n]+/, `@version ${version}`)
+  );
+});
 
 gulp.task('test', function (done) {
   new (require('karma').Server)({
@@ -39,7 +66,6 @@ gulp.task('ngdocs', [], function () {
 });
 
 gulp.task('build', ['test', 'ngdocs'], function () {
-
   return gulp.src(libFile)
     .pipe(gulp.plugins.ngAnnotate())
     .pipe(gulp.plugins.rename(libFile.replace('.js', '.min.js')))

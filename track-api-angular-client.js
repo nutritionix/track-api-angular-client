@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.2.0
+ * @version 1.2.1
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -446,12 +446,13 @@
        * @returns {Object[]} --
        */
       client.log.barcode = function (upc, consumedAt) {
+        var data = {upc: upc};
+        if (consumedAt) {
+          data.consumed_at = consumedAt;
+        }
         return client('/log/barcode', {
           method: 'POST',
-          data:   {
-            upc:         upc,
-            consumed_at: consumedAt || null
-          }
+          data:   data
         });
       };
 
