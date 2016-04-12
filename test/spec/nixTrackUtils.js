@@ -524,4 +524,22 @@ describe('Track API client: nixTrackUtils', function () {
         });
       }));
   });
+
+  describe('"sumFoods"', function () {
+    it('should properly sum foods',
+      inject(function (nixTrackUtils) {
+        var foods = [angular.copy(food), angular.copy(food)];
+        var sum = nixTrackUtils.sumFoods(foods);
+
+        angular.forEach(sum, function (value, key) {
+          if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+            expect(sum[key]).toBe(food[key] * 2);
+          }
+        });
+
+        angular.forEach(sum.full_nutrients, function (nutrient, index) {
+          expect(nutrient.value).toBe(food.full_nutrients[index].value * 2);
+        });
+      }));
+  });
 });

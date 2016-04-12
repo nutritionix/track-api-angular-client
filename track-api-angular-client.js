@@ -1028,7 +1028,7 @@
    * @description
    * Wide purpose helpers and utilities service
    */
-  module.factory('nixTrackUtils', function () {
+  module.factory('nixTrackUtils', function ($filter) {
     return {
       /**
        * @ngdoc method
@@ -1067,6 +1067,48 @@
         });
 
         return copy;
+      },
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#sumFoods
+       *
+       * @description
+       * Sum nutrition values for array of foods
+       *
+       * @param {object[]} foods Input foods
+       *
+       * @returns {object} Output nutrient data
+       */
+      sumFoods: function (foods) {
+        var sum = {
+          serving_qty:    1,
+          serving_unit:   'Serving',
+          full_nutrients: []
+        };
+
+        angular.forEach(foods, function (food) {
+          angular.forEach(food, function (value, key) {
+            if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+              sum[key] = (sum[key] || 0) + value;
+            }
+          });
+
+
+          angular.forEach(food.full_nutrients, function (nutrient) {
+            var sumNutrient = $filter('nutrient')(sum.full_nutrients, nutrient.attr_id);
+
+            if (sumNutrient) {
+              sumNutrient.value += nutrient.value;
+            } else {
+              sum.full_nutrients.push(angular.copy(nutrient));
+            }
+          });
+        });
+
+        return sum;
       },
 
       /**
