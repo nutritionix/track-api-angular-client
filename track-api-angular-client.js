@@ -1,5 +1,6 @@
 /**
  * @license Track Api Angular Client
+ * @version 1.2.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
