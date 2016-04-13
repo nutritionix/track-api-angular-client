@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.2.1
+ * @version 1.2.2
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -404,7 +404,7 @@
       client.log.add = function (foods) {
         return client('/log', {
           method: 'POST',
-          data:   {foods: angular.isArray(foods) ? foods : [foods]}
+          data:   {foods: nixTrackUtils.cleanFoods(angular.isArray(foods) ? foods : [foods])}
         });
       };
 
@@ -471,7 +471,7 @@
       client.log.update = function (foods) {
         return client('/log', {
           method: 'PUT',
-          data:   {foods: angular.isArray(foods) ? foods : [foods]}
+          data:   {foods: nixTrackUtils.cleanFoods(angular.isArray(foods) ? foods : [foods])}
         });
       };
 
@@ -1033,6 +1033,29 @@
   module.factory('nixTrackUtils', function ($filter) {
     return {
       /**
+       * @ngdoc property
+       * @propertyOf nix.track-api-client.service:nixTrackUtils
+       * @name nix.track-api-client.service:nixTrackUtils#foodAllowedFields
+       * @type {Array}
+       *
+       * @description
+       * List of food fields accepted by Track API
+       */
+      foodAllowedFields: [
+        'metadata', 'food_name', 'brand_name',
+        'serving_qty', 'serving_unit', 'serving_weight_grams',
+        'nf_calories', 'nf_total_fat', 'nf_saturated_fat',
+        'nf_cholesterol', 'nf_sodium', 'nf_total_carbohydrate',
+        'nf_dietary_fiber', 'nf_sugars', 'nf_protein',
+        'nf_potassium', 'nf_p', 'full_nutrients', 'created_at',
+        'consumed_at', 'nix_brand_name', 'nix_brand_id',
+        'nix_item_name', 'nix_item_id', 'upc',
+        'source', 'ndb_no', 'natural_query_id',
+        'tags', 'id'
+      ],
+
+
+      /**
        * @ngdoc method
        * @methodOf nix.track-api-client.service:nixTrackUtils
        *
@@ -1173,6 +1196,51 @@
         }
 
         return fraction;
+      },
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#cleanFoods
+       *
+       * @description
+       * Cleans any extra fields from provided foods.
+       * Supports both single food and array of foods.
+       * Does not mutate original data
+       *
+       * @param {Object|Object[]} foods Input food(s)
+       * @returns {Object|Object[]} Cleaned food(s)
+       */
+      cleanFoods: function (foods) {
+        var result, cleanFood, i, j, field, food;
+
+        if (angular.isArray(foods)) {
+          result = [];
+        } else {
+          //result remains undefined, this will be used as a flag later
+          foods = [foods];
+        }
+
+        for (i = 0; i < foods.length; i += 1) {
+          food = foods[i];
+          cleanFood = {};
+          for (j = 0; j < this.foodAllowedFields.length; j += 1) {
+            field = this.foodAllowedFields[j];
+
+            if (field in food) {
+              cleanFood[field] = food[field];
+            }
+          }
+
+          if (angular.isArray(result)) {
+            result.push(cleanFood);
+          } else {
+            result = cleanFood;
+          }
+        }
+
+        return result;
       }
     };
   });

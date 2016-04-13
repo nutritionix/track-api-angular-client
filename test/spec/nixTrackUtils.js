@@ -542,4 +542,23 @@ describe('Track API client: nixTrackUtils', function () {
         });
       }));
   });
+
+  describe('"cleanFoods"', function () {
+    it('should remove extra field and leave others untouched',
+      inject(function (nixTrackUtils) {
+        var testFood = angular.copy(food);
+        testFood.extra_field = 'TEST';
+
+        expect(testFood).not.toEqual(food);
+        expect(nixTrackUtils.cleanFoods(testFood)).toEqual(food);
+      }));
+
+    it('should accept array and return array in this case',
+      inject(function (nixTrackUtils) {
+        var testFood = angular.copy(food);
+        testFood.extra_field = 'TEST';
+
+        expect(nixTrackUtils.cleanFoods([testFood])).toEqual([food]);
+      }));
+  });
 });

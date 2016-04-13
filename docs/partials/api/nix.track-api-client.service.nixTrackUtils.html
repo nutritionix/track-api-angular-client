@@ -15,6 +15,14 @@ based on current food and target serving quantity</p>
 </div></td></tr></tbody></table><h5 id="methods_calculatefoodmultiplier_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-calculatefoodmultiplier-page"><p>multiplier</p>
 </div></td></tr></table></div>
 </li>
+<li><h3 id="methods_cleanfoods">cleanFoods(foods)</h3>
+<div class="cleanfoods"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-cleanfoods-page"><p>Cleans any extra fields from provided foods.
+Supports both single food and array of foods.
+Does not mutate original data</p>
+</div><h5 id="methods_cleanfoods_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>foods</td><td><a href="" class="label type-hint type-hint-object">Object</a><a href="" class="label type-hint type-hint-object">Object[]</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-cleanfoods-page"><p>Input food(s)</p>
+</div></td></tr></tbody></table><h5 id="methods_cleanfoods_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object|Object[]</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-cleanfoods-page"><p>Cleaned food(s)</p>
+</div></td></tr></table></div>
+</li>
 <li><h3 id="methods_convertsimplefractiontodecimal">convertSimpleFractionToDecimal(fraction)</h3>
 <div class="convertsimplefractiontodecimal"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-convertsimplefractiontodecimal-page"><p>Converts simple fraction strings like &#39;1/4&#39; into decimal. Leaves any other value untouched.</p>
 </div><h5 id="methods_convertsimplefractiontodecimal_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>fraction</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-convertsimplefractiontodecimal-page"><p>Simple fraction string</p>
@@ -41,6 +49,13 @@ Does not copy id, created_at and consumed_at properties of the original food</p>
 </div><h5 id="methods_sumfoods_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>foods</td><td><a href="" class="label type-hint type-hint-object">object[]</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-sumfoods-page"><p>Input foods</p>
 </div></td></tr></tbody></table><h5 id="methods_sumfoods_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-sumfoods-page"><p>Output nutrient data</p>
 </div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_foodallowedfields">foodAllowedFields</h3>
+<div class="foodallowedfields"><div class="nix-track-api-client-service-page nix-track-api-client-service-nixtrackutils-foodallowedfields-page"><p>List of food fields accepted by Track API</p>
+</div></div>
 </li>
 </ul>
 </div>
