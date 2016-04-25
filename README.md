@@ -30,7 +30,7 @@ Load service into your controller and call it's endpoints
 Please refer to [API reference](http://nutritionix.github.io/track-api-angular-client/docs/)
 
 ```javascript
-module.controller('MainCtrl', function ($scope, nixTrackApiClient) {
+module.controller('MainCtrl', function ($scope, nixTrackApiClient, nixTrackUtils, nixTrackCalculator) {
     // ...
 });
 ```
