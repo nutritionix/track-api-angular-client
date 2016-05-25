@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.2.2
+ * @version 1.2.3
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -1051,7 +1051,7 @@
         'consumed_at', 'nix_brand_name', 'nix_brand_id',
         'nix_item_name', 'nix_item_id', 'upc',
         'source', 'ndb_no', 'natural_query_id',
-        'tags', 'id'
+        'tags', 'id', 'alt_measures'
       ],
 
 
