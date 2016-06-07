@@ -414,7 +414,7 @@
        *
        * @name nix.track-api-client.nixTrackApiClient.object:log#copy
        * @description
-       * Copies food object to user's log with different approaches depending on the food
+       * Copies food object to user's log
        *
        * @param {Object} food Food log to copy from
        * @param {string} consumedAt Consumed at timestamp
