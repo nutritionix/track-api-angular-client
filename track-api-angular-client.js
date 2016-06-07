@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.2.3
+ * @version 1.3.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -422,10 +422,6 @@
        * @returns {Object[]} --
        */
       client.log.copy = function (food, consumedAt) {
-        if (food.source === 2 && food.upc) {
-          return client.log.barcode(food.upc, consumedAt);
-        }
-
         var copy = nixTrackUtils.copyFood(food);
         copy.consumed_at = consumedAt;
 
