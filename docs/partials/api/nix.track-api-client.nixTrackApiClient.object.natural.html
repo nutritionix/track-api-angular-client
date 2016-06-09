@@ -14,7 +14,7 @@ or object with extended configuration</p>
 </div></td></tr></tbody></table><h5 id="methods_add_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-add-page"><p>Added food info</p>
 </div></td></tr></table></div>
 </li>
-<li><h3 id="methods_nutrients">nutrients(query)</h3>
+<li><h3 id="methods_nutrients">nutrients(query, anonymous)</h3>
 <div class="nutrients"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-nutrients-page"><p>Returns the nutrients for all foods in the posted query.</p>
 </div><h5 id="methods_nutrients_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>query</td><td><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-nutrients-page"><p>Plain text with each entry separated by a new line, or configuration object</p>
 <pre><code>{
@@ -24,7 +24,8 @@ or object with extended configuration</p>
  &quot;line_delimited&quot;: false,
  &quot;timezone&quot;: &quot;US/Eastern&quot;
 }
-</code></pre></div></td></tr></tbody></table><h5 id="methods_nutrients_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-nutrients-page"><p>nutrients for all foods in the posted query.</p>
+</code></pre></div></td></tr><tr><td>anonymous</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-nutrients-page"><p>If true request will be sent anonymously (without x-user-jwt header)</p>
+</div></td></tr></tbody></table><h5 id="methods_nutrients_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-natural-nutrients-page"><p>nutrients for all foods in the posted query.</p>
 </div></td></tr></table></div>
 </li>
 <li><h3 id="methods_tags">tags(query)</h3>

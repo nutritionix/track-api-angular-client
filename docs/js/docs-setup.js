@@ -100,7 +100,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "NLP related endpoints",
-      "keywords": "add aggregate api configuration endpoints entry extended false food foods info line_delimited method natural nix nixtrackapiclient nlp num_servings nutrients object plain posted query returns separated string tags text timezone track-api-client update updated"
+      "keywords": "add aggregate anonymous anonymously api configuration endpoints entry extended false food foods header info line_delimited method natural nix nixtrackapiclient nlp num_servings nutrients object plain posted query request returns separated string tags text timezone track-api-client true update updated x-user-jwt"
     },
     {
       "section": "api",

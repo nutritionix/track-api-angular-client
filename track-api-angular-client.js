@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.3.1
+ * @version 1.4.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -252,12 +252,15 @@
        *                              }
        *                              ```
        *
+       * @param {boolean} anonymous If true request will be sent anonymously (without x-user-jwt header)
+       *
        * @returns {Object} nutrients for all foods in the posted query.
        */
-      client.natural.nutrients = function (query) {
+      client.natural.nutrients = function (query, anonymous) {
         return client('/natural/nutrients', {
-          method: 'POST',
-          data:   angular.isString(query) ? {query: query} : query
+          method:  'POST',
+          data:    angular.isString(query) ? {query: query} : query,
+          headers: anonymous ? {"x-user-jwt": undefined} : {}
         });
       };
 
