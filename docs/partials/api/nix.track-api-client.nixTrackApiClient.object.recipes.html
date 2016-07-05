@@ -7,10 +7,9 @@
 <div class="description"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-page"><p>Recipes related endpoints</p>
 </div></div>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods_add">add(name, query)</h3>
-<div class="add"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-add-page"><p>creates recipe</p>
-</div><h5 id="methods_add_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-add-page"><p>Recipe name</p>
-</div></td></tr><tr><td>query</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-add-page"><p>Recipe query</p>
+<ul class="methods"><li><h3 id="methods_add">add(recipe)</h3>
+<div class="add"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-add-page"><p>Creates recipe</p>
+</div><h5 id="methods_add_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>recipe</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-add-page"><p>Recipe object</p>
 </div></td></tr></tbody></table></div>
 </li>
 <li><h3 id="methods_delete">delete(id)</h3>
@@ -18,20 +17,19 @@
 </div><h5 id="methods_delete_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-delete-page"><p>Recipe id</p>
 </div></td></tr></tbody></table></div>
 </li>
-<li><h3 id="methods_get">get([id], [userId])</h3>
+<li><h3 id="methods_get">get([id])</h3>
 <div class="get"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-get-page"><p>requests recipes</p>
 </div><h5 id="methods_get_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>[id]</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-get-page"><p>The id of a recipe to retrieve.
-If absent then endpoint returns all recipes for specified user.</p>
-</div></td></tr><tr><td>[userId]</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-get-page"><p>the user which recipe(s) belong to.
-defaults to the authenticated user</p>
+If absent then endpoint returns all recipes for the user.</p>
 </div></td></tr></tbody></table><h5 id="methods_get_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object|Object[]</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-get-page"><p>Recipe(s)</p>
 </div></td></tr></table></div>
 </li>
-<li><h3 id="methods_update">update(id, name, query)</h3>
-<div class="update"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>update recipe_name</p>
-</div><h5 id="methods_update_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>Recipe id</p>
-</div></td></tr><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>Recipe name</p>
-</div></td></tr><tr><td>query</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>Recipe query</p>
+<li><h3 id="methods_update">update(recipe)</h3>
+<div class="update"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>Update recipe.
+Note the array of creates, updates, deletes.
+These are the actions to be applied to the individual ingredients.
+The ingredients field on the recipe itself are ignored</p>
+</div><h5 id="methods_update_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>recipe</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-recipes-update-page"><p>Recipe object</p>
 </div></td></tr></tbody></table></div>
 </li>
 </ul>

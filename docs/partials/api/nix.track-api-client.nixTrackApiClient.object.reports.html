@@ -7,10 +7,24 @@
 <div class="description"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-page"><p>Reports related endpoints</p>
 </div></div>
 <div class="member method"><h2 id="methods">Methods</h2>
-<ul class="methods"><li><h3 id="methods_request">request(params)</h3>
-<div class="request"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-request-page"><p>requests historical food log data</p>
-</div><h5 id="methods_request_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-request-page"><p>Please refer to track api docs</p>
-</div></td></tr></tbody></table><h5 id="methods_request_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-request-page"><p>Totals data</p>
+<ul class="methods"><li><h3 id="methods_suggested">suggested()</h3>
+<div class="suggested"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-suggested-page"><p>Requests suggested foods that users consume around this time/day</p>
+</div><h5 id="methods_suggested_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-suggested-page"><p>Suggested foods that users consume around this time/day</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_summary">summary(timezone)</h3>
+<div class="summary"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-summary-page"><p>Gets number of days that user has logged in a row,
+total days that a user has logged sufficient foods,
+and total unique number of foods logged.</p>
+</div><h5 id="methods_summary_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>timezone</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-summary-page"><p>Timezone to use for this query.
+Defaults to users timezone on account i.e. UTC or US/Eastern</p>
+</div></td></tr></tbody></table><h5 id="methods_summary_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-summary-page"><p>Object of such structure  <code>{&quot;streak&quot;:0,&quot;daysLogged&quot;:0,&quot;uniqueFoods&quot;:0}</code></p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_totals">totals(params)</h3>
+<div class="totals"><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-totals-page"><p>Requests historical food log data</p>
+</div><h5 id="methods_totals_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-totals-page"><p>Please refer to track api docs</p>
+</div></td></tr></tbody></table><h5 id="methods_totals_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="nix-track-api-client-nixtrackapiclient-object-page nix-track-api-client-nixtrackapiclient-object-reports-totals-page"><p>Totals data</p>
 </div></td></tr></table></div>
 </li>
 </ul>

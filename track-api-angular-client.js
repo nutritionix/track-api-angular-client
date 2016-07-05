@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.4.0
+ * @version 1.5.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -790,9 +790,9 @@
        * @ngdoc method
        * @methodOf nix.track-api-client.nixTrackApiClient.object:reports
        *
-       * @name nix.track-api-client.nixTrackApiClient.object:reports#request
+       * @name nix.track-api-client.nixTrackApiClient.object:reports#totals
        * @description
-       * requests historical food log data
+       * Requests historical food log data
        *
        * @param {object} params Please refer to track api docs
        *
@@ -802,6 +802,44 @@
         return client('/reports/totals', {
           method: 'GET',
           params: params
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.object:reports
+       *
+       * @name nix.track-api-client.nixTrackApiClient.object:reports#suggested
+       * @description
+       * Requests suggested foods that users consume around this time/day
+       *
+       * @returns {object} Suggested foods that users consume around this time/day
+       */
+      client.reports.suggested = function () {
+        return client('/reports/suggested', {
+          method: 'GET'
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.object:reports
+       *
+       * @name nix.track-api-client.nixTrackApiClient.object:reports#summary
+       * @description
+       * Gets number of days that user has logged in a row,
+       * total days that a user has logged sufficient foods,
+       * and total unique number of foods logged.
+       *
+       * @param {string} timezone Timezone to use for this query.
+       *                          Defaults to users timezone on account i.e. UTC or US/Eastern
+       *
+       * @returns {object} Object of such structure  ```{"streak":0,"daysLogged":0,"uniqueFoods":0}```
+       */
+      client.reports.summary = function (timezone) {
+        return client('/reports/summary', {
+          method: 'GET',
+          params: timezone ? {timezone: timezone} : {}
         });
       };
 
@@ -819,47 +857,18 @@
        * @ngdoc method
        * @methodOf nix.track-api-client.nixTrackApiClient.object:recipes
        *
-       * @name nix.track-api-client.nixTrackApiClient.object:recipes#delete
-       * @description
-       * delete recipe
-       *
-       * @param {string} id Recipe id
-       */
-      client.recipes.delete = function (id) {
-        return client('/recipes', {
-          method: 'DELETE',
-          data:   {id: id}
-        });
-      };
-
-      /**
-       * @ngdoc method
-       * @methodOf nix.track-api-client.nixTrackApiClient.object:recipes
-       *
        * @name nix.track-api-client.nixTrackApiClient.object:recipes#get
        * @description
        * requests recipes
        *
        * @param {string} [id] The id of a recipe to retrieve.
-       *                    If absent then endpoint returns all recipes for specified user.
-       * @param {string} [userId] the user which recipe(s) belong to.
-       *                          defaults to the authenticated user
+       *                      If absent then endpoint returns all recipes for the user.
        *
        * @return {Object|Object[]} Recipe(s)
        */
-      client.recipes.get = function (id, userId) {
-        var params = {};
-        if (userId) {
-          params.user = userId;
-        }
-
-        if (id) {
-          params.id = id;
-        }
-
-        return client('/recipes', {
-          method: 'GET',
-          params: params
+      client.recipes.get = function (id) {
+        return client('/recipes' + (id ? '/' + id : ''), {
+          method: 'GET'
         });
       };
 
@@ -869,17 +878,15 @@
        *
        * @name nix.track-api-client.nixTrackApiClient.object:recipes#add
        * @description
-       * creates recipe
+       * Creates recipe
        *
-       * @param {string} name Recipe name
-       * @param {string} query Recipe query
+       * @param {object} recipe Recipe object
        */
-      client.recipes.add = function (name, query) {
+      client.recipes.add = function (recipe) {
         return client('/recipes', {
           method: 'POST',
           data:   {
-            "query":       query,
-            "recipe_name": name
+            "recipe": recipe
           }
         });
       };
@@ -890,27 +897,33 @@
        *
        * @name nix.track-api-client.nixTrackApiClient.object:recipes#update
        * @description
-       * update recipe_name
+       * Update recipe.
+       * Note the array of creates, updates, deletes.
+       * These are the actions to be applied to the individual ingredients.
+       * The ingredients field on the recipe itself are ignored
+       *
+       * @param {object} recipe Recipe object
+       */
+      client.recipes.update = function (recipe) {
+        return client('/recipes', {
+          method: 'PUT',
+          data:   {recipe: recipe}
+        });
+      };
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.nixTrackApiClient.object:recipes
+       *
+       * @name nix.track-api-client.nixTrackApiClient.object:recipes#delete
+       * @description
+       * delete recipe
        *
        * @param {string} id Recipe id
-       * @param {string} name Recipe name
-       * @param {string} query Recipe query
        */
-      client.recipes.update = function (id, name, query) {
-        var data = {id: id};
-
-        if (!angular.isUndefined(name)) {
-          data.name = name;
-        }
-
-        if (!angular.isUndefined(query)) {
-          data.query = query;
-        }
-
-        return client('/recipes', {
-          method:  'PUT',
-          headers: {"x-user-jwt": client.getUserJwt()},
-          data:    data
+      client.recipes.delete = function (id) {
+        return client('/recipes/' + id, {
+          method: 'DELETE'
         });
       };
 

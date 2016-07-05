@@ -127,7 +127,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "Recipes related endpoints",
-      "keywords": "absent add api authenticated belong creates defaults delete endpoint endpoints method nix nixtrackapiclient object query recipe recipe_name recipes requests retrieve returns track-api-client update user"
+      "keywords": "absent actions add api applied array creates delete deletes endpoint endpoints field ignored individual ingredients method nix nixtrackapiclient note object recipe recipes requests retrieve returns track-api-client update updates user"
     },
     {
       "section": "api",
@@ -136,7 +136,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "nix.track-api-client.nixTrackApiClient",
       "shortDescription": "Reports related endpoints",
-      "keywords": "api data docs endpoints food historical log method nix nixtrackapiclient object params refer reports request requests totals track track-api-client"
+      "keywords": "account api consume data days dayslogged defaults docs endpoints food foods historical log logged method nix nixtrackapiclient number object params query refer reports requests row streak structure sufficient suggested summary time timezone total totals track track-api-client unique uniquefoods user users utc"
     },
     {
       "section": "api",
