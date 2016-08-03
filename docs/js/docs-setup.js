@@ -163,7 +163,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used for configuring nix.track-api-client.service:nixTrackApiClient service",
-      "keywords": "allows angularjs api appid appkey application base calls change compatible configuration configuring credentials defaults endpoint generated http https key method nix nixtrackapiclient nixtrackapiclientprovider nutritionix object org override portal provider service service-wide set setapicredentials setendpoint sethttpconfig track-api-client usage"
+      "keywords": "allows angularjs api appid appkey application base calls change compatible config configuration configuring credentials defaults endpoint extends generated http https key merge method nix nixtrackapiclient nixtrackapiclientprovider nutritionix object org override overrides portal provider service service-wide set setapicredentials setendpoint sethttpconfig track-api-client true usage"
     },
     {
       "section": "api",
@@ -172,7 +172,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.track-api-client",
       "shortDescription": "Used to make calls to nutritionix api.",
-      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client config configuration considered credentials current default disregarding endpoint fat fetch fiber final form function generated getapiendpoint getuserjwt headers http https ids jwt key level list low macronutrients method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org original override overrides params portal property protein provider relative retrieve return satfat service service-function set setapicredentials setuserjwt sugar top totalcarb track-api-client true url usage user wrappers x-app-id x-app-key x-user-jwt"
+      "keywords": "angularjs api apiendpoint appid appkey application build built call call-specific callable calls calories calories_nutrient chain client compatible config configuration considered credentials current default disregarding endpoint extends fat fetch fiber final form function generated getapiendpoint getuserjwt headers http https ids jwt key level list low macronutrients merge method methods methods_sethttpconfig nix nixtrackapiclient nixtrackapiclientprovider nutrient nutrients nutritionix object org original override overrides params portal property protein provider relative retrieve return satfat service service-function service-wide set setapicredentials sethttpconfig setuserjwt sugar top totalcarb track-api-client true url usage user wrappers x-app-id x-app-key x-user-jwt"
     },
     {
       "section": "api",

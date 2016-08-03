@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.5.0
+ * @version 1.5.1
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -42,7 +42,8 @@
       apiEndpoint = originalApiEndpoint,
       credentials = {},
       httpConfig = {},
-      setApiCredentials;
+      setApiCredentials,
+      setHttpConfig;
 
 
     /**
@@ -76,14 +77,15 @@
      * @name nix.track-api-client.provider:nixTrackApiClientProvider#setHttpConfig
      * @param {object} value configuration object compatible with
      *                       https://docs.angularjs.org/api/ng/service/$http#usage
+     * @param {boolean} merge If true extends config, otherwise overrides it
      *
      * @description
      * Set service-wide override for http calls configuration object
      * {@link https://docs.angularjs.org/api/ng/service/$http#usage}
      */
-    this.setHttpConfig = function (value) {
+    setHttpConfig = this.setHttpConfig = function (value, merge) {
       if (angular.isObject(value)) {
-        httpConfig = value;
+        httpConfig = merge ? angular.merge(httpConfig, value) : value;
       }
     };
 
@@ -194,6 +196,20 @@
        * Set api credentials generated at https://developer.nutritionix.com portal
        */
       client.setApiCredentials = setApiCredentials;
+
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackApiClient
+       * @name nix.track-api-client.service:nixTrackApiClient#setHttpConfig
+       * @param {object} value configuration object compatible with
+       *                       https://docs.angularjs.org/api/ng/service/$http#usage
+       * @param {boolean} merge If true extends config, otherwise overrides it
+       *
+       * @description
+       * Set service-wide override for http calls configuration object
+       * {@link https://docs.angularjs.org/api/ng/service/$http#usage}
+       */
+      client.setHttpConfig = setHttpConfig;
 
       /**
        * @ngdoc property
