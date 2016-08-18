@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.5.1
+ * @version 1.5.2
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -1145,16 +1145,19 @@
         angular.forEach(foods, function (food) {
           angular.forEach(food, function (value, key) {
             if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
-              sum[key] = (sum[key] || 0) + value;
+              if (sum[key] !== null || value !== null) {
+                sum[key] = parseFloat(sum[key] || 0) + parseFloat(value || 0);
+              }
             }
           });
-
 
           angular.forEach(food.full_nutrients, function (nutrient) {
             var sumNutrient = $filter('nutrient')(sum.full_nutrients, nutrient.attr_id);
 
             if (sumNutrient) {
-              sumNutrient.value += nutrient.value;
+              if (sumNutrient.value !== null || nutrient.value !== null) {
+                sumNutrient.value = parseFloat(sumNutrient.value || 0) + parseFloat(nutrient.value || 0);
+              }
             } else {
               sum.full_nutrients.push(angular.copy(nutrient));
             }
