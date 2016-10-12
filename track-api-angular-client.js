@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.5.3
+ * @version 1.6.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -1079,7 +1079,7 @@
         'consumed_at', 'nix_brand_name', 'nix_brand_id',
         'nix_item_name', 'nix_item_id', 'upc',
         'source', 'ndb_no', 'natural_query_id',
-        'tags', 'id', 'alt_measures', 'photo'
+        'tags', 'id', 'alt_measures', 'photo', 'meal_type'
       ],
 
 
@@ -1193,7 +1193,7 @@
        *
        * @description
        * Creates a deep copy of the provided food, including the full nutrients array.
-       * Does not copy id, created_at and consumed_at properties of the original food
+       * Does not copy id, created_at, consumed_at, meal_type properties of the original food
        *
        * @param {object} food Target food
        * @returns {object} food copy
@@ -1203,6 +1203,7 @@
         delete copy.id;
         delete copy.created_at;
         delete copy.consumed_at;
+        delete copy.meal_type;
 
         return copy;
       },
