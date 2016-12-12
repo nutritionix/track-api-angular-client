@@ -1263,6 +1263,10 @@
 
             if (field in food) {
               cleanFood[field] = food[field];
+
+              if (field === 'note' && !cleanFood[field]) {
+                cleanFood[field] = null;
+              }
             }
           }
 
