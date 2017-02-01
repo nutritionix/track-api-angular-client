@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.6.2
+ * @version 1.6.3
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -38,7 +38,7 @@
    * Used for configuring {@link nix.track-api-client.service:nixTrackApiClient} service
    */
   module.provider('nixTrackApiClient', function nixTrackApiClient() {
-    var originalApiEndpoint = 'https://trackapi.nutritionix.com/v1',
+    var originalApiEndpoint = 'https://trackapi.nutritionix.com/v2',
       apiEndpoint = originalApiEndpoint,
       credentials = {},
       httpConfig = {},
