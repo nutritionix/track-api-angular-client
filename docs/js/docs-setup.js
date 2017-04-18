@@ -190,7 +190,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "nix.track-api-client",
       "shortDescription": "Wide purpose helpers and utilities service",
-      "keywords": "accepted api apply array based calculate calculatefoodmultiplier cleaned cleanfoods cleans consumed_at converts convertsimplefractiontodecimal copy copyfood created_at creates creating current data decimal deep extra fields food foodallowedfields foods fraction fractions full helpers including inplace input leaves level list meal_type method modified multiplier multiply multiplyfoodnutrients mutate nix nixtrackutils nutrient nutrients nutrition object original output param properties property provided purpose quantity returns service serving set simple single string strings sum sumfoods support supports target targetservingquantity top track track-api-client true untouched utilities values wide"
+      "keywords": "accepted api apply array based calculate calculatefoodmultiplier check cleaned cleanfoods cleans consumed_at converted converts convertsimplefractiontodecimal copy copyfood created_at creates creating current data decimal deep extra fields food foodallowedfields foods fraction fractions full helpers including inplace input isnumeric leaves level list meal_type method modified multiplier multiply multiplyfoodnutrients mutate nix nixtrackutils number numerical nutrient nutrients nutrition object original output param proper properties property provided purpose quantity returns service serving set simple single string strings sum sumfoods support supports target targetservingquantity top track track-api-client true untouched utilities values wide"
     }
   ],
   "apis": {

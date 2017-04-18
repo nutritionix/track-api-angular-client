@@ -514,7 +514,9 @@ describe('Track API client: nixTrackUtils', function () {
         var multiplied = nixTrackUtils.multiplyFoodNutrients(food, multiplier);
 
         angular.forEach(multiplied, function (value, key) {
-          if (key === 'serving_qty' || key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+          if (key === 'nf_ingredient_statement') {
+            expect(multiplied[key]).toBe(food[key]);
+          } else if (key === 'serving_qty' || key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
             expect(multiplied[key]).toBe(food[key] * multiplier);
           }
         });
@@ -528,11 +530,15 @@ describe('Track API client: nixTrackUtils', function () {
   describe('"sumFoods"', function () {
     it('should properly sum foods',
       inject(function (nixTrackUtils) {
-        var foods = [angular.copy(food), angular.copy(food)];
-        var sum = nixTrackUtils.sumFoods(foods);
+        var foods                        = [angular.copy(food), angular.copy(food)];
+        foods[0].nf_ingredient_statement = 'word 1';
+        foods[1].nf_ingredient_statement = 'word 2';
+        var sum                          = nixTrackUtils.sumFoods(foods);
 
         angular.forEach(sum, function (value, key) {
-          if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+          if (key === 'nf_ingredient_statement') {
+            expect(sum[key]).toBe('word 1\nword 2');
+          } else if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
             expect(sum[key]).toBe(food[key] * 2);
           }
         });
@@ -540,6 +546,18 @@ describe('Track API client: nixTrackUtils', function () {
         angular.forEach(sum.full_nutrients, function (nutrient, index) {
           expect(nutrient.value).toBe(food.full_nutrients[index].value * 2);
         });
+
+        expect(nixTrackUtils.sumFoods([
+          {nf_ingredient_statement: 'word 1'},
+          {nf_ingredient_statement: null},
+          {nf_ingredient_statement: 'word 2'},
+        ]).nf_ingredient_statement).toBe('word 1\nword 2');
+
+        expect(nixTrackUtils.sumFoods([
+          {nf_ingredient_statement: null},
+          {nf_ingredient_statement: null},
+          {nf_ingredient_statement: null},
+        ]).nf_ingredient_statement).toBe(null)
       }));
   });
 

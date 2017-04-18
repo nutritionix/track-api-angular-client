@@ -1,6 +1,6 @@
 /**
  * @license Track Api Angular Client
- * @version 1.6.3
+ * @version 1.7.0
  * (c) 2016 Nutritionix, LLC. http://nutritinix.com
  * License: MIT
  */
@@ -1059,6 +1059,10 @@
    * Wide purpose helpers and utilities service
    */
   module.factory('nixTrackUtils', function ($filter) {
+    function isNumeric(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
     return {
       /**
        * @ngdoc property
@@ -1080,9 +1084,23 @@
         'nix_item_name', 'nix_item_id', 'upc',
         'source', 'ndb_no', 'natural_query_id',
         'tags', 'id', 'alt_measures', 'photo', 'meal_type',
-        'note'
+        'note', 'nf_ingredient_statement'
       ],
 
+      /**
+       * @ngdoc method
+       * @methodOf nix.track-api-client.service:nixTrackUtils
+       *
+       * @name nix.track-api-client.service:nixTrackUtils#isNumeric
+       *
+       * @description
+       * Check if value can be converted to a proper number/float.
+       *
+       * @param {*} n Any value
+       *
+       * @returns {boolean} Whether value is numerical
+       */
+      isNumeric: isNumeric,
 
       /**
        * @ngdoc method
@@ -1107,7 +1125,7 @@
         if (+multiplier === 1) {return copy;}
 
         angular.forEach(copy, function (value, key) {
-          if (key === 'serving_qty' || key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
+          if (isNumeric(copy[key]) && (key === 'serving_qty' || key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_')) {
             copy[key] *= multiplier;
           }
         });
@@ -1138,17 +1156,20 @@
        */
       sumFoods: function (foods) {
         var sum = {
-          serving_qty:    1,
-          serving_unit:   'Serving',
-          full_nutrients: []
+          serving_qty:             1,
+          serving_unit:            'Serving',
+          full_nutrients:          [],
+          nf_ingredient_statement: foods
+                                     .map(function (f) {return f.nf_ingredient_statement || ''})
+                                     .filter(function (ns) {return !!ns})
+                                     .join('\n')
+                                     .trim() || null
         };
 
         angular.forEach(foods, function (food) {
           angular.forEach(food, function (value, key) {
-            if (key === 'serving_weight_grams' || key.substr(0, 3) === 'nf_') {
-              if (sum[key] !== null || value !== null) {
-                sum[key] = parseFloat(sum[key] || 0) + parseFloat(value || 0);
-              }
+            if (isNumeric(value) && (key === 'serving_weight_grams' || key !== 'nf_ingredient_statement' && key.substr(0, 3) === 'nf_')) {
+              sum[key] = (sum[key] || 0) + parseFloat(value);
             }
           });
 
